@@ -60,5 +60,5 @@ for url in urls:
         results.append({"error":"error downloading %s" % url})
 
 # Output json object as last line. This is treated as the OpenWhisk action result.
-print json.dumps(results)
+print json.dumps({"results:":results})
 

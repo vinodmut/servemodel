@@ -27,7 +27,7 @@ This project demonstrates how to serve a neural net model in the cloud.
 
    You should see the logs of Caffe classifying an image using the SqueezeNet model. The last line of output should look like this:
    ```
-   [{"class": 386, "labels": "African elephant, Loxodonta africana"}]
+   {"results:": [{"class": 386, "labels": "African elephant, Loxodonta africana"}]}
    ```
 
 1. Push the Docker image to Docker Hub and create the OpenWhisk action:
@@ -41,8 +41,12 @@ This project demonstrates how to serve a neural net model in the cloud.
    ```
    $ wsk action invoke servecaffe --blocking --result --param url http://elelur.com/data_images/mammals/elephant/elephant-03.jpg
    {
-      "class": "386",
-      "label": "African elephant, Loxodonta africana"
+       "results:": [
+           {
+               "class": 386,
+               "labels": "African elephant, Loxodonta africana"
+           }
+       ]
    }
    ```
 
